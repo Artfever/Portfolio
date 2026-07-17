@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
-import FlakeArt from "./FlakeArt";
+import ProjectArt from "./ProjectArt";
 
 const primaryBtn =
   "inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-[13px] font-medium text-ink transition-transform duration-300 ease-out-expo hover:scale-[1.04]";
@@ -30,6 +30,8 @@ export default function ProjectCard({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
   const hasVideo = Boolean(project.videoSrc);
+  // Animated posters take precedence over the video thumbnail on the card.
+  const showsVideoThumb = !project.animation && hasVideo;
 
   useEffect(() => {
     const el = cardRef.current;
@@ -61,13 +63,18 @@ export default function ProjectCard({
   return (
     <article
       ref={cardRef}
-      onMouseEnter={hasVideo ? play : undefined}
-      onMouseLeave={hasVideo ? pause : undefined}
+      onMouseEnter={showsVideoThumb ? play : undefined}
+      onMouseLeave={showsVideoThumb ? pause : undefined}
       className="group relative flex w-[85vw] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-paper/10 bg-paper/[0.03] backdrop-blur-sm transition-colors duration-500 hover:border-paper/25 sm:w-[460px]"
     >
       {/* poster / hover preview */}
       <div className="relative aspect-video w-full overflow-hidden bg-paper/5">
-        {hasVideo ? (
+        {project.animation ? (
+          <ProjectArt
+            variant={project.animation}
+            className="grayscale transition-[filter] duration-700 ease-out-expo group-hover:grayscale-0"
+          />
+        ) : showsVideoThumb ? (
           inView && (
             // #t=0.1 makes the browser show a real frame as the thumbnail
             <video
@@ -80,8 +87,6 @@ export default function ProjectCard({
               className={mediaClass}
             />
           )
-        ) : project.animation === "flake" ? (
-          <FlakeArt className="grayscale transition-[filter] duration-700 ease-out-expo group-hover:grayscale-0" />
         ) : project.posterSrc ? (
           <Image
             src={project.posterSrc}

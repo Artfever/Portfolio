@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { projects, getProjectBySlug } from "@/data/projects";
-import FlakeArt from "@/components/sections/FlakeArt";
+import ProjectArt from "@/components/sections/ProjectArt";
 
 type Params = { params: { slug: string } };
 
@@ -80,8 +80,8 @@ export default function ProjectPage({ params }: Params) {
               playsInline
               preload="metadata"
             />
-          ) : project.animation === "flake" ? (
-            <FlakeArt />
+          ) : project.animation ? (
+            <ProjectArt variant={project.animation} />
           ) : project.posterSrc ? (
             <Image
               src={project.posterSrc}

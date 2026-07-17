@@ -7,7 +7,7 @@ export type Project = {
   stack: string[];
   videoSrc?: string; // optional .mp4 demo clip — omit for projects with no video
   posterSrc?: string; // image shown on the card / detail view (and video poster)
-  animation?: "flake"; // render a custom animated poster instead of an image
+  animation?: "flake" | "sdrmis" | "cdiem" | "ocean"; // custom animated poster
   liveUrl?: string;
   repoUrl?: string;
 };
@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "A Smart Disaster Response Management Information System built to coordinate emergency operations. It centralizes incident reporting, resource allocation, and role-based access so response teams can act quickly and stay in sync. The interface is built with Next.js, React, and Framer Motion, backed by a Node.js and Express API, a MySQL database, and secure authentication using JSON Web Tokens with bcrypt password hashing.",
     stack: ["Next.js", "React", "Node.js", "Express", "MySQL", "JWT", "Framer Motion"],
     videoSrc: "/videos/Project-2.mp4",
-    posterSrc: "/placeholder-poster.svg",
+    animation: "sdrmis",
     repoUrl: "https://github.com/TahaSohail-Goat/SmartDisasterResponseMIS",
   },
   {
@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "CDIEM (Criminal Digital Investigation & Evidence Management) is a desktop application for managing criminal investigations and the digital evidence tied to them. It centralizes case records, evidence tracking, and investigation workflows in one structured, organized system. Built with JavaFX and Java, backed by a MySQL database, with a CSS-styled interface.",
     stack: ["JavaFX", "Java", "MySQL", "CSS"],
     videoSrc: "/videos/Project-3.mp4",
-    posterSrc: "/placeholder-poster.svg",
+    animation: "cdiem",
     repoUrl: "https://github.com/Artfever/CDIEM-Projct",
   },
   {
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       "An Ocean Route Navigation System that computes the shortest and lowest-cost sea routes between ports. It models the ports and their connections as a graph and applies core pathfinding algorithms — A*, Dijkstra, BFS, and DFS — to find optimal, cost-efficient routes. Built in C++ with SFML for real-time visualization.",
     stack: ["C++", "SFML", "A* / Dijkstra", "BFS / DFS"],
     videoSrc: "/videos/Project-4.mp4",
-    posterSrc: "/placeholder-poster.svg",
+    animation: "ocean",
     repoUrl: "https://github.com/Artfever/Ocean-Route-Navigation-Project",
   },
 ];

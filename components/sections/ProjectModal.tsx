@@ -6,7 +6,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import type { Project } from "@/data/projects";
 import { getLenis } from "@/lib/lenis";
-import FlakeArt from "./FlakeArt";
+import ProjectArt from "./ProjectArt";
 
 /**
  * Full-screen detail overlay for a selected project (SPA feel). The same
@@ -98,8 +98,8 @@ export default function ProjectModal({
               playsInline
               preload="metadata"
             />
-          ) : project.animation === "flake" ? (
-            <FlakeArt />
+          ) : project.animation ? (
+            <ProjectArt variant={project.animation} />
           ) : project.posterSrc ? (
             <Image
               src={project.posterSrc}
