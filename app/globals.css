@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #0a0a0a;
+  --color-paper: #f5f4f0;
+  --color-accent: #ede9e1;
+
+  /* System-font defaults. next/font overrides these via .variable classes
+     on <html> if you enable the block in app/layout.tsx. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+}
+
+/* ---- Lenis smooth scroll (recommended base styles) ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---- Layout helpers ---- */
+@layer components {
+  .section {
+    @apply relative w-full px-6 md:px-12 lg:px-20;
+  }
+
+  .section-pad {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-[1600px];
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-paper/50;
+  }
+}
+
+/* ---- Custom cursor: hide native cursor only on fine-pointer devices ---- */
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* ---- Respect reduced-motion preferences ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Preloader scroll lock ---- */
+html.is-loading,
+html.is-loading body {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* ---- Hide scrollbar (used by the horizontal project scroller) ---- */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- Reflections (WebKit/Chromium/Safari; degrades gracefully elsewhere) ---- */
+.reflect {
+  -webkit-box-reflect: below 2px
+    linear-gradient(to bottom, rgba(245, 244, 240, 0.18), transparent 25%);
+}
+
+.reflect-a {
+  -webkit-box-reflect: below 10px
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent 58%);
+}
+
+/* ---- Flake project card: falling snow + spinning snowflake ---- */
+@keyframes snowfall {
+  0% {
+    top: -8%;
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 108%;
+    transform: translateX(16px);
+    opacity: 0;
+  }
+}
+
+.flake-dot {
+  position: absolute;
+  top: -8%;
+  border-radius: 9999px;
+  background: rgba(220, 240, 255, 0.9);
+  box-shadow: 0 0 4px rgba(160, 210, 255, 0.6);
+  animation-name: snowfall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flakeSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.flake-spin {
+  transform-origin: 50% 50%;
+  animation: flakeSpin 22s linear infinite;
+}
+
+@keyframes flakeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.flake-float {
+  animation: flakeFloat 5s ease-in-out infinite;
+}
