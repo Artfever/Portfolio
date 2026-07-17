@@ -48,6 +48,7 @@ export default function Footer() {
 
           <a
             href="/resume.pdf"
+            download
             data-cursor="link"
             className="text-sm text-paper/60 transition-colors hover:text-accent"
           >
