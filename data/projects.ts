@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     slug: "flake",
     title: "Flake",
-    index: "001",
+    index: "01",
     summary: "An all-in-one student portal — my rework of FAST's Flex.",
     description:
       "Flake is an all-in-one student portal that reworks FAST's Flex, bringing the core functionality of Google Classroom, email, and Flex together in a single, unified interface. Built with HTML and CSS on the frontend and Python with the Flask framework on the backend.",
@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     slug: "smart-disaster-response",
     title: "Smart Disaster Response MIS",
-    index: "002",
+    index: "02",
     summary:
       "A management information system for coordinating disaster response in real time.",
     description:
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     slug: "cdiem",
     title: "CDIEM",
-    index: "003",
+    index: "03",
     summary:
       "A desktop system for managing criminal investigations and digital evidence.",
     description:
@@ -54,7 +54,7 @@ export const projects: Project[] = [
   {
     slug: "ocean-route-navigation",
     title: "Ocean Route Navigation",
-    index: "004",
+    index: "04",
     summary:
       "Finds the shortest, lowest-cost sea routes between ports using graph algorithms.",
     description:

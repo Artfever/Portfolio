@@ -21,9 +21,8 @@ const groups = [
       "Filmora",
       "CapCut",
       "Topaz",
-      "Kiro",
       "Aikido (security)",
-      "Gemini",
+      "Git & GitHub",
     ],
   },
 ];
