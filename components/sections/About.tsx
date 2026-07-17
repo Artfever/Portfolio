@@ -112,7 +112,7 @@ export default function About() {
             <Reveal className="space-y-6 text-lg leading-relaxed text-paper/80">
               <p>
                 I&apos;m Muhammad Shaheer, a software engineer and third-year
-                Computer Science student at FAST NUCES Islamabad. I&apos;ve been
+                Software Engineering student at FAST NUCES Islamabad. I&apos;ve been
                 coding for 2.5+ years and have built 10+ projects spanning web,
                 desktop, and systems programming.
               </p>
