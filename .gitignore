@@ -36,5 +36,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local backup of uncompressed source videos (not for deploy)
-/_video-originals
