@@ -5,6 +5,7 @@ import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import NavDots from "@/components/NavDots";
 import Background from "@/components/three/Background";
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * Typography defaults to a system-font stack (see --font-sans / --font-mono in
@@ -51,6 +52,7 @@ export default function RootLayout({
         <CustomCursor />
         <NavDots />
         <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
